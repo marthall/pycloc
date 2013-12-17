@@ -19,6 +19,7 @@ def line_count(file_name):
     number_code_lines = 0
     number_of_comment_lines = 0
     number_of_blank_lines = 0
+    files = 0
 
     ext = file_name.rsplit(".")[-1]
     for lang in LANGUAGES:
@@ -35,13 +36,22 @@ def line_count(file_name):
         number_of_lines += 1
 
     print(80 * "-")
-    print("Language".ljust(20) + "files".rjust(10) + "blank".rjust(16) +
-          "comment".rjust(16) + "code".rjust(16))
+    print("{lang:<16}{files:>16}{blank:>16}{comment:>16}{code:>16}".format(
+        lang="language",
+        files="files",
+        blank="blank",
+        comment="comments",
+        code="total"
+    ))
     print(80 * "-")
     for i in range(1):
-        print(language.ljust(20) + "%10d%16d%16d%16d" % (100,
-              number_of_blank_lines, number_of_comment_lines,
-              number_code_lines))
+        print("{lang:<16}{files:>16}{blank:>16}{comment:>16}{code:>16}".format(
+            lang=language,
+            files=files,
+            blank=number_of_blank_lines,
+            comment=number_of_comment_lines,
+            code=number_code_lines
+        ))
     print(80 * "-")
 
     return number_of_lines, number_code_lines, number_of_comment_lines,
