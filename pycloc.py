@@ -68,6 +68,8 @@ def get_args():
 
 def main():
     args = get_args()
+    if args.file():
+        None
     line_count(os.path.join(here, "test.py"))
 
 
