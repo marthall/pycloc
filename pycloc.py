@@ -14,6 +14,10 @@ LANGUAGES = {
 }
 
 
+def print_table():
+    None
+
+
 def line_count(file_name):
     number_of_lines = 0
     number_code_lines = 0
@@ -25,6 +29,7 @@ def line_count(file_name):
     for lang in LANGUAGES:
         if ext in LANGUAGES[lang]["EXT"]:
             language = lang
+            break
 
     for line in open(file_name).readlines():
         if line.strip() == "":
@@ -61,16 +66,17 @@ def line_count(file_name):
 def get_args():
     parser = ArgumentParser(description="Python line counting tool?",
                             prog='pycloc')
-    parser.add_argument('-f', '--file', action='store_true', default=False,
-                        dest='ascii', help='input file')
+    parser.add_argument('-f', '--file',
+                        dest='file', help='input file')
     return parser.parse_args()
 
 
 def main():
     args = get_args()
-    if args.file():
-        None
-    line_count(os.path.join(here, "test.py"))
+    if args.file:
+        abs_path = os.path.join(here, args.file)
+        line_count(abs_path)
+        exit()
 
 
 if __name__ == '__main__':
