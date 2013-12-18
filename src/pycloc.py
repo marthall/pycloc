@@ -68,10 +68,14 @@ def line_count(file_name):
 
 
 def get_args():
-    parser = ArgumentParser(description="Python line counting tool?",
-                            prog='pycloc')
-    parser.add_argument('-f', '--file',
-                        dest='file', help='input file')
+    parser = ArgumentParser(
+        description="Python line counting tool?",
+        prog='pycloc')
+    parser.add_argument(
+        '-f',
+        '--file',
+        dest='file',
+        help='input file')
     return parser.parse_args()
 
 
