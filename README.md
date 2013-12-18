@@ -8,5 +8,5 @@ Count lines of code with Python
 #### with pip
 (`sudo`) `pip install pycloc`
 
-#### localy after clone
+#### locally after clone
 `python setup.py install`
