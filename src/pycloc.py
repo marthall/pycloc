@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
-
 from __future__ import print_function
 import os
+import sys
 from argparse import ArgumentParser
 
-here = os.path.dirname(__file__)
+here = os.getcwd()
 
 LANGUAGES = {
     "Python": {"EXT": ["py"],
@@ -26,10 +26,14 @@ def line_count(file_name):
     files = 0
 
     ext = file_name.rsplit(".")[-1]
+    language = None
     for lang in LANGUAGES:
         if ext in LANGUAGES[lang]["EXT"]:
             language = lang
             break
+    if language is None:
+        print("Extension not found!")
+        sys.exit(0)
 
     for line in open(file_name).readlines():
         if line.strip() == "":
@@ -46,7 +50,7 @@ def line_count(file_name):
         files="files",
         blank="blank",
         comment="comments",
-        code="total"
+        code="code"
     ))
     print(80 * "-")
     for i in range(1):
